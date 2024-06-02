@@ -3,21 +3,56 @@ import { Input } from "@nextui-org/react";
 import { AiFillMedicineBox } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
+import useAuth from '../../Hooks/useAuth';
+import { ImSpinner3 } from "react-icons/im";
+
 
 const Login = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate()
 
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [isVisible, setIsVisible] = useState(false);
-  
     const toggleVisibility = () => setIsVisible(!isVisible);
+
+    const {loginUser, loginWithGoogle, loading, setLoading} = useAuth()
+
   
-    const onSubmit = (data) => {
-      console.log(data);
+    const onSubmit = async (data) => {
+      const {email , password} = data;
+
+      try{    
+         setLoading(true)
+         // creating user 
+         const {user} = await loginUser(email, password)
+         navigate('/')
+         toast.success("Login Successfully")
+         setLoading(false)
+       }catch(err){
+        console.log(err.message)
+        toast.error(err.message)
+        setLoading(false)
+       }
+
     };
+
+    const handleGoogleLogIn = async () => {
+      try{
+       const {user} = await loginWithGoogle()
+       navigate('/')
+       toast.success("Login Successfully")
+      }catch(err){
+       console.log(err.message)
+       toast.error(err.message)
+       setLoading(false)
+
+      }
+   }
 
     return (
         <>
@@ -71,17 +106,17 @@ const Login = () => {
 
           <div className='pt-4'>
             <button className="btn w-full text-white font-bold bg-gradient-to-br from-green-500 to-emerald-600">
-              Log in
+            {loading? <ImSpinner3 className="animate-spin mx-auto text-white size-6" /> : "Log in"}
             </button>
           </div>
         </form>        
             <div className="text-center pt-4">
-                <button className="btn w-[400px] font-bold  "><FcGoogle className="text-2xl" />
+                <button onClick={handleGoogleLogIn} className="btn w-[400px] font-bold  "><FcGoogle className="text-2xl" />
  Google</button>
             </div>
           <div className="pt-3 italic text-center">
             <p>
-              Haven't an Account? <Link to={"/login"}>Sign up</Link>
+              Haven't an Account? <Link to={"/signUp"}>Sign up</Link>
             </p>
           </div>
       </section>

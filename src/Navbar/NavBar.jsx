@@ -2,10 +2,16 @@ import React from 'react';
 import { AiFillMedicineBox } from "react-icons/ai";
 import { Link, NavLink } from 'react-router-dom';
 import { FaCartPlus } from "react-icons/fa";
+import useAuth from '../Hooks/useAuth';
 
 const NavBar = () => {
 
-    const user = false
+  const {user, logout} = useAuth()
+  console.log(user)
+
+  const handleLogout = () => {
+    logout();
+  }
 
     const li = <>
     <NavLink to={'/'}>Home</NavLink>
@@ -37,25 +43,25 @@ const NavBar = () => {
     </ul>
   </div>
  {
-    user ?  <div className="dropdown dropdown-end pl-[200px] lg:pl-[450px] ">
+    user ?  <div className="dropdown dropdown-end md:pl-[400px] pl-[190px] lg:pl-[450px] ">
     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
       <div className="w-14 rounded-full ">
-        <img alt="Tailwind CSS Navbar component" src="invalidPhoto.jpg" />
+        <img alt="Tailwind CSS Navbar component" src={user? user?.photoURL : "invalidPhoto.jpg"} />
       </div>
     </div>
     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
       <li className='font-semibold'>
-        <a className="justify-between">
+        <Link to={'/profile'} className="justify-between">
           Profile
           <span className="badge">New</span>
-        </a>
+        </Link>
       </li>
-      <li className='font-semibold'><a>Dashboard</a></li>
-      <li className='font-semibold'><a>Logout</a></li>
+      <li className='font-semibold'><Link to={'/dashboard'}>Dashboard</Link></li>
+      <li onClick={handleLogout} className='font-semibold'><a>Logout</a></li>
     </ul>
   </div> :   <div className="navbar-end space-x-5">
     <Link to={'/login'} className="btn text-white font-bold bg-gradient-to-br from-green-500 to-emerald-600">Log in </Link>
-    <Link to={'/signin'} className="btn text-white font-bold bg-gradient-to-br from-green-500 to-emerald-600">Sign up</Link>
+    <Link to={'/signUp'} className="btn text-white font-bold bg-gradient-to-br from-green-500 to-emerald-600">Sign up</Link>
   </div>
  }
 </div>

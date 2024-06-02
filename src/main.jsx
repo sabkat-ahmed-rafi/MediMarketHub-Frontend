@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import Root from "./Root/Root";
 import Home from "./Components/Home";
 import Shop from "./Components/Shop/Shop";
@@ -11,6 +11,17 @@ import JoinUs from "./Components/JoinUs";
 import Login from "./Authentication/Login/Login";
 import SignUp from "./Authentication/SignUp/SignUp";
 import { NextUIProvider } from "@nextui-org/react";
+import Authentication from "./Authentication/Authentication";
+import Dashboard from "./Dashboard/Dashboard";
+import PrivateRoute from "./Routes/PrivateRoute";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import ManageUser from "./Dashboard/Admin/ManageUser";
+import AdminRoute from "./Dashboard/Admin/AdminRoute";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -27,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/join",
@@ -36,20 +51,33 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/signin",
+    path: "/signUp",
     element: <SignUp />,
   },
   {
     path: "/login",
     element: <Login />,
   },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "/dashboard/manageUser",
+        element: <AdminRoute><ManageUser /></AdminRoute>,
+      }
+    ]
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <NextUIProvider>
-      <RouterProvider router={router} />{" "}
-      <Toaster />
-    </NextUIProvider>
+    <QueryClientProvider client={queryClient}>
+      <Authentication>
+        <NextUIProvider>
+          <RouterProvider router={router} /> <Toaster />
+        </NextUIProvider>
+      </Authentication>
+    </QueryClientProvider>
   </React.StrictMode>
 );

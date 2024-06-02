@@ -20,6 +20,8 @@ import {
 } from "@tanstack/react-query";
 import ManageUser from "./Dashboard/Admin/ManageUser";
 import AdminRoute from "./Dashboard/Admin/AdminRoute";
+import SellerRoute from "./Dashboard/Seller/SellerRoute";
+import ManageMedicine from "./Dashboard/Seller/ManageMedicine";
 
 const queryClient = new QueryClient();
 
@@ -65,7 +67,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manageUser",
         element: <AdminRoute><ManageUser /></AdminRoute>,
-      }
+      },
+      {
+        path: "/dashboard/manageMedicine",
+        element: <SellerRoute><ManageMedicine /></SellerRoute>,
+      },
     ]
   },
 ]);

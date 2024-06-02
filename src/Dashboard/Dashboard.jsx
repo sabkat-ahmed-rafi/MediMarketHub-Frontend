@@ -9,7 +9,7 @@ const Dashboard = () => {
                 <div className='lg:w-[25%] w-[30%]'>
                     <Sidebar  />
                 </div>
-                <div className='w-[75%]'>
+                <div className='w-[75%] px-[4%]'>
                     <Outlet />
                 </div>
             </section>

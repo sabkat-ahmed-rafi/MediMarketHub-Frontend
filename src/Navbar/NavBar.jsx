@@ -46,7 +46,7 @@ const NavBar = () => {
     user ?  <div className="dropdown dropdown-end md:pl-[400px] pl-[190px] lg:pl-[450px] ">
     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
       <div className="w-14 rounded-full ">
-        <img alt="Tailwind CSS Navbar component" src={user? user?.photoURL : "invalidPhoto.jpg"} />
+        <img src={user ? user?.photoURL : "invalidPhoto.jpg"}  alt="Tailwind CSS" />
       </div>
     </div>
     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">

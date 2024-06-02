@@ -24,7 +24,7 @@ const Sidebar = () => {
     
   return (
     <>
-      <section className="min-h-screen bg-green-100 border-r-green-600  shadow-lg shadow-green-700 rounded-tr-3xl rounded-br-3xl">
+      <section className="sticky top-0 min-h-screen bg-green-100 border-r-green-600  shadow-lg shadow-green-700 rounded-tr-3xl rounded-br-3xl">
         <div className="flex flex-col items-center">
           <Link to={"/"} className="btn mt-6 btn-ghost font-bold md:text-2xl lg:text-3xl">
             <AiFillMedicineBox className="text-green-600 lg:text-4xl" />
@@ -59,7 +59,7 @@ const Sidebar = () => {
                     <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7"><FaHome /><span>Seller Home</span></Link>
                 </div>
                 <div className="lg:border-t border-slate-400 py-6">
-                    <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7"><GiMedicines /><span>Manage Medicines</span></Link>
+                    <Link to={'/dashboard/manageMedicine'} className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7"><GiMedicines /><span>Manage Medicines</span></Link>
                 </div>
                 <div className="lg:border-t border-slate-400 py-6">
                     <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><FaMoneyCheckAlt /><span>Payment History</span></Link>

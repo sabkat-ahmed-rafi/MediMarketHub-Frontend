@@ -5,6 +5,7 @@ const uploadImage = async (image) => {
     formData.append('image', image)
     try {
         const {data} = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imagebb}`, formData)
+        console.log(data.data.display_url)
         return data.data.display_url;
     }catch(err){
         console.log(err.message)

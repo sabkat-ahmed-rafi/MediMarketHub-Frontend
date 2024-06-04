@@ -10,6 +10,7 @@ import uploadImage from '../../Authentication/Utility/uploadImage';
 import { ImSpinner2 } from 'react-icons/im';
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
+import useCategory from '../../Hooks/useCategory';
 
 
 const ManageMedicine = () => {
@@ -17,8 +18,9 @@ const ManageMedicine = () => {
     const {register, handleSubmit, formState: { errors }, reset} = useForm()
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-    
-    const categories = [ "Analgesics", "Antibiotics", "Antivirals","Antifungals"  ]
+    const {categories: allCategories} = useCategory()
+    const categories = allCategories.map(category => category.categoryName)
+
     const companies = [ "Pharma Inc.", "MedLife", "HealthCorp", "Wellness Ltd." ]
     const itemMassUnit = ['Mg', 'ML']
 
@@ -82,7 +84,7 @@ const ManageMedicine = () => {
         <>
         
         <Header title={"Manage Medicine"} description={'Welcome to the Manage Medicines section of your seller dashboard. This comprehensive feature allows you to efficiently manage your entire inventory of medicines. Here, you can add new medicines and keep track of stock levels and expiry dates'} />
-            <section>
+            <section className='pb-12'>
                 <div className='pb-4'>
                 <Button onPress={onOpen} className='bg-gradient-to-br from-teal-400 to-emerald-600 text-white font-semibold' variant="shadow">Add Medicine</Button> 
                 {/* now i have to implement the modal here  */}

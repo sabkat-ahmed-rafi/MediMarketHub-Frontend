@@ -34,7 +34,7 @@ const NavBar = () => {
         {li}
       </ul>
     </div>
-    <Link to={'/'} className="btn btn-ghost font-bold text-2xl "><AiFillMedicineBox className='text-green-600 text-4xl' />
+    <Link to={'/'} className="btn btn-ghost hover:bg-white font-bold text-2xl "><AiFillMedicineBox className='text-green-600 text-4xl ' />
  MediMarketHub</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -49,7 +49,7 @@ const NavBar = () => {
         <img src={user ? user?.photoURL : "invalidPhoto.jpg"}  alt="Tailwind CSS" />
       </div>
     </div>
-    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+    <ul tabIndex={0} className="mt-3 z-[50] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
       <li className='font-semibold'>
         <Link to={'/profile'} className="justify-between">
           Profile

@@ -41,7 +41,7 @@ const Sidebar = () => {
                     <Link to={'/dashboard/manageUser'} className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7"><FaUsersLine /><span>Manage Users</span></Link>
                 </div>
                 <div className="lg:border-t border-slate-400 py-6">
-                    <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><BiSolidCategory /><span>Manage Category</span></Link>
+                    <Link to={"/dashboard/manageCategory"} className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><BiSolidCategory /><span>Manage Category</span></Link>
                 </div>
                 <div className="lg:border-t border-slate-400 py-6">
                     <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><FaMoneyCheckAlt /><span>Payment management</span></Link>

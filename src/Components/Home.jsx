@@ -1,4 +1,5 @@
 import React from 'react';
+import CategoryCard from './CategoryCard';
 
 const Home = () => {
     
@@ -6,7 +7,7 @@ const Home = () => {
 
     return (
         <div>
-            home hoon main 
+            <CategoryCard/>
         </div>
     );
 };

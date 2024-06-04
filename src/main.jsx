@@ -22,6 +22,8 @@ import ManageUser from "./Dashboard/Admin/ManageUser";
 import AdminRoute from "./Dashboard/Admin/AdminRoute";
 import SellerRoute from "./Dashboard/Seller/SellerRoute";
 import ManageMedicine from "./Dashboard/Seller/ManageMedicine";
+import ManageCategory from "./Dashboard/Admin/ManageCategory";
+import CategoryDetails from "./Components/CategoryDetails";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
         path: "/join",
         element: <JoinUs />,
       },
+      {
+        path: "/categoryDetails/:category",
+        element: <CategoryDetails />,
+      },
     ],
   },
   {
@@ -71,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manageMedicine",
         element: <SellerRoute><ManageMedicine /></SellerRoute>,
+      },
+      {
+        path: "/dashboard/manageCategory",
+        element: <AdminRoute><ManageCategory /></AdminRoute>,
       },
     ]
   },

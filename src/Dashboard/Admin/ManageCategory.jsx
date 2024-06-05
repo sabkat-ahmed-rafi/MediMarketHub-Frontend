@@ -29,19 +29,16 @@ const ManageCategory = () => {
   } = useForm();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const {loading, setLoading} = useState(false);
 
   const handleAdd = async (data) => {
-    setLoading(true);
     const { categoryName, photo } = data;
 
     try {
       const image = await uploadImage(photo[0]);
       const categoryInfo = {categoryName, image}
-      setLoading(false);
-
+      
       const {data} = await axiosSecure.post('/category', categoryInfo);
-
+      
       if(data.insertedId) {
         toast.success("Category Added Successfully");
         reset();
@@ -51,7 +48,6 @@ const ManageCategory = () => {
     } catch (err) {
       console.log(err.message);
       toast.error(err.message);
-      setLoading(false);
     }
   };
 
@@ -135,15 +131,7 @@ const ManageCategory = () => {
                             variant="shadow"
                             color="primary"
                           >
-                            {loading ? (
-                              <ImSpinner2
-                                size={20}
-                                color="white"
-                                className="animate-spin mx-auto"
-                              />
-                            ) : (
-                              "Add"
-                            )}
+                             Add
                           </Button>
                         </div>
                       </form>

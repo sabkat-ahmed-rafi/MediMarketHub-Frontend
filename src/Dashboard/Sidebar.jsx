@@ -50,7 +50,7 @@ const Sidebar = () => {
                     <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><BiSolidReport /><span>Sales Report</span></Link>
                 </div>
                 <div className="lg:border-t border-slate-400 py-6">
-                    <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><RiAdvertisementFill /><span>Manage banner Advertise</span></Link>
+                    <Link to={"/dashboard/manageAds"} className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><RiAdvertisementFill /><span>Manage banner Advertise</span></Link>
                 </div>
                 </nav>}
             {/* Seller Role Menu Items  */}
@@ -65,7 +65,7 @@ const Sidebar = () => {
                     <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><FaMoneyCheckAlt /><span>Payment History</span></Link>
                 </div>
                 <div className="lg:border-t border-slate-400 py-6">
-                    <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><RiAdvertisementFill /><span>Ask For Advertisement</span></Link>
+                    <Link to={"/dashboard/askAdvertisement"} className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 "><RiAdvertisementFill /><span>Ask For Advertisement</span></Link>
                 </div>
                 </nav>}
             {/* User Role Menu Items  */}

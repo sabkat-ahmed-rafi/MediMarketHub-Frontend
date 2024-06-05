@@ -2,6 +2,7 @@ import React from 'react';
 import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
 import useCategory from '../Hooks/useCategory';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 
 
 
@@ -12,7 +13,8 @@ const CategoryCard = () => {
 
     return (
         <>
-        <section className='px-[100px]'>
+        <Header title={'Category'} description={'Find medicine from a specific category'}></Header>
+        <section className='px-[100px] pb-20'>
         <div className="gap-10 grid grid-cols-2 sm:grid-cols-3">
       {categories.map((item, index) => (
         <Card shadow="lg" key={index} isPressable>
@@ -30,7 +32,7 @@ const CategoryCard = () => {
           </CardBody>
           <CardFooter className="text-small justify-between">
             <b>{item.categoryName}</b>
-            <p className="text-default-500">{'3'}</p>
+            <p className="text-default-500 font-bold">{item.totalIncategory}</p>
           </CardFooter>
         </Card>
       ))}

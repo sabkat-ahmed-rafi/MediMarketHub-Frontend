@@ -24,6 +24,9 @@ import SellerRoute from "./Dashboard/Seller/SellerRoute";
 import ManageMedicine from "./Dashboard/Seller/ManageMedicine";
 import ManageCategory from "./Dashboard/Admin/ManageCategory";
 import CategoryDetails from "./Components/CategoryDetails";
+import AskAdvertisement from "./Dashboard/Seller/AskAdvertisement";
+import ManageAds from "./Dashboard/Admin/ManageAds";
+import Error from "./Components/Error";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +34,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -73,6 +77,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manageUser",
         element: <AdminRoute><ManageUser /></AdminRoute>,
+      },
+      {
+        path: "/dashboard/manageAds",
+        element: <AdminRoute><ManageAds /></AdminRoute>,
+      },
+      {
+        path: "/dashboard/askAdvertisement",
+        element: <SellerRoute><AskAdvertisement /></SellerRoute>,
       },
       {
         path: "/dashboard/manageMedicine",

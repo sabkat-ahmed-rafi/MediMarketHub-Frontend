@@ -9,6 +9,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure}
 import { format } from 'date-fns';
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import Header from './Header';
 
 
 const CategoryDetails = () => {
@@ -58,6 +59,7 @@ const CategoryDetails = () => {
 
     return (
         <>
+        <Header title={'Category Details'} description={"Here you can find all the category based medicine infortmation. You can also see detailed information about specific category. Click the eye button to see all details."}></Header>
             <section className='px-[100px]'>
             <Table 
         defaultSelectedKeys={["2"]} 
@@ -95,7 +97,7 @@ const CategoryDetails = () => {
               <ModalBody>
               <section className='flex items-center'>
                 <div>
-                    <img className='w-[60%]' src={selectedItem?.image} alt="" />
+                    <img className='w-[60%] rounded-md' src={selectedItem?.image} alt="" />
                 </div>
                 <div>
                     <p className='font-semibold text-xl'>{selectedItem?.genericName}</p>

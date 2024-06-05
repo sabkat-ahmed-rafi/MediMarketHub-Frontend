@@ -36,12 +36,14 @@ const ManageMedicine = () => {
 
       const image = await uploadImage(photo[0])
 
+      const discount = parseInt(percentage)
+
       const medicineInfo = {
          name,
          genericName, 
          description, 
          price, 
-         percentage, 
+         percentage: discount, 
          category, 
          company, 
          massUnit, 
@@ -49,7 +51,8 @@ const ManageMedicine = () => {
          postedOn: Date.now(),
          seller: user?.email,
          sellerName: user?.displayName,
-         sellerPhoto: user?.photoURL
+         sellerPhoto: user?.photoURL,
+         isAdvertised: 'No'
          }
 
          console.log(medicineInfo)

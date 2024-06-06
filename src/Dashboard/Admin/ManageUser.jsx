@@ -27,6 +27,8 @@ import Header from "../../Components/Header";
 const ManageUser = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [userRole, setUserRole] = useState("");
+
+    const [userEmail, setUserEmail] = useState('')
     
     const { data: users = [], refetch } = useQuery({
         queryKey: ["users"],
@@ -36,10 +38,10 @@ const ManageUser = () => {
         },
     });
     
-    const handleChangeUser = async (email) => {
+    const handleChangeUser = async () => {
 
         try{
-            const { data } = await axiosSecure.patch(`/user/updateRole`, { role: userRole, email })
+            const { data } = await axiosSecure.patch(`/user/updateRole`, { role: userRole, userEmail })
         refetch()
         toast.success('Role updated successfully')
         setUserRole("")
@@ -73,7 +75,9 @@ const ManageUser = () => {
                 <TableCell className="font-semibold">{user.role}</TableCell>
                 <TableCell className="font-semibold">
                   <Button
-                    onPress={onOpen}
+                    onPress={() => {
+                      setUserEmail(user.email) 
+                      onOpen()}}
                     className="font-semibold text-white bg-gradient-to-br from-teal-400 to-emerald-600 shadow-lg "
                   >
                     Change
@@ -84,7 +88,7 @@ const ManageUser = () => {
                       {(onClose) => (
                         <>
                           <ModalHeader className="flex flex-col gap-1">
-                            Current Role is {user?.role}
+                            Change The Position 
                           </ModalHeader>
                           <ModalBody>
                             <Select
@@ -109,7 +113,9 @@ const ManageUser = () => {
                               Cancel
                             </Button>
                             <Button
-                              onClick={() => handleChangeUser(user?.email)}
+                              onClick={() => {
+                                                              
+                                handleChangeUser()}}
                               className="font-semibold text-white"
                               color="success"
                               onPress={onClose}

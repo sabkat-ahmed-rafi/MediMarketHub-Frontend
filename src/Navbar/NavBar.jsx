@@ -34,7 +34,7 @@ const NavBar = () => {
         {li}
       </ul>
     </div>
-    <Link to={'/'} className="btn btn-ghost hover:bg-white font-bold text-2xl "><AiFillMedicineBox className='text-green-600 text-4xl ' />
+    <Link to={'/'} className="btn btn-ghost hover:bg-white font-bold text-2xl "><AiFillMedicineBox className='text-emerald-500 text-4xl ' />
  MediMarketHub</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -46,7 +46,7 @@ const NavBar = () => {
     user ?  <div className="dropdown dropdown-end md:pl-[400px] pl-[190px] lg:pl-[450px] ">
     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
       <div className="w-14 rounded-full ">
-        <img src={user ? user?.photoURL : "invalidPhoto.jpg"}  alt="Tailwind CSS" />
+        <img src={user ? user?.photoURL : "invalidPhoto.jpg"}  alt="Photo" />
       </div>
     </div>
     <ul tabIndex={0} className="mt-3 z-[50] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">

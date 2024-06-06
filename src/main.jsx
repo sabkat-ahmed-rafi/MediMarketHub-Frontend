@@ -27,6 +27,10 @@ import CategoryDetails from "./Components/CategoryDetails";
 import AskAdvertisement from "./Dashboard/Seller/AskAdvertisement";
 import ManageAds from "./Dashboard/Admin/ManageAds";
 import Error from "./Components/Error";
+import SidebarHome from "./Dashboard/SidebarHome";
+import UserHome from "./Dashboard/User/UserHome";
+import SellerPayment from "./Dashboard/Seller/SellerPayment";
+import AdminPayment from "./Dashboard/Admin/AdminPayment";
 
 const queryClient = new QueryClient();
 
@@ -75,6 +79,10 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
+        path: "/dashboard",
+        element: <SidebarHome />,
+      },
+      {
         path: "/dashboard/manageUser",
         element: <AdminRoute><ManageUser /></AdminRoute>,
       },
@@ -93,6 +101,18 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manageCategory",
         element: <AdminRoute><ManageCategory /></AdminRoute>,
+      },
+      {
+        path: "/dashboard/adminPayment",
+        element: <AdminRoute><AdminPayment /></AdminRoute>,
+      },
+      {
+        path: "/dashboard/sellerPayment",
+        element: <SellerRoute><SellerPayment /></SellerRoute>,
+      },
+      {
+        path: "/dashboard/userPayment",
+        element: <UserHome />,
       },
     ]
   },

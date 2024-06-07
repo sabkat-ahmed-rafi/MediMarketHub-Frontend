@@ -10,6 +10,7 @@ import { axiosSecure } from '../../Hooks/useAxiosSecure';
 import Header from '../../Components/Header';
 import { useForm } from "react-hook-form"
 import uploadImage from '../../Authentication/Utility/uploadImage';
+import { Helmet } from 'react-helmet-async';
 
 
 const AskAdvertisement = () => {
@@ -59,6 +60,9 @@ const AskAdvertisement = () => {
 
     return (
         <>
+        <Helmet>
+        <title>Manage Ads || MediMarketHub</title>
+      </Helmet>
         <Header title={"Manage Advertisements"} description={"Here you can manage your advertisements. You can also send request for advertisement. And you can also see all the information for your advertised products."}></Header>
             <section className=' pb-20'>
             <Table 

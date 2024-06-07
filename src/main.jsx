@@ -33,6 +33,9 @@ import SellerPayment from "./Dashboard/Seller/SellerPayment";
 import AdminPayment from "./Dashboard/Admin/AdminPayment";
 import Checkout from "./Components/Cart/Checkout";
 import Invoice from "./Components/Cart/Invoice";
+import SalesReport from "./Dashboard/Admin/SalesReport";
+import Profile from "./Dashboard/User/Profile";
+import { HelmetProvider } from 'react-helmet-async';
 
 const queryClient = new QueryClient();
 
@@ -45,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/shop",
@@ -121,6 +128,10 @@ const router = createBrowserRouter([
         element: <SellerRoute><SellerPayment /></SellerRoute>,
       },
       {
+        path: "/dashboard/salesReport",
+        element: <AdminRoute><SalesReport /></AdminRoute>,
+      },
+      {
         path: "/dashboard/userPayment",
         element: <UserHome />,
       },
@@ -131,11 +142,13 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
+    <HelmetProvider>
       <Authentication>
         <NextUIProvider>
           <RouterProvider router={router} /> <Toaster />
         </NextUIProvider>
       </Authentication>
+    </HelmetProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );

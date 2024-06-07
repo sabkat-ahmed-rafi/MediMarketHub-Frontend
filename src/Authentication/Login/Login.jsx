@@ -9,6 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import useAuth from '../../Hooks/useAuth';
 import { ImSpinner3 } from "react-icons/im";
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -20,7 +21,7 @@ const Login = () => {
     const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
 
-    const {loginUser, loginWithGoogle, loading, setLoading} = useAuth()
+    const {loginUser, loginWithGoogle, loading, setLoading, saveUser} = useAuth()
 
   
     const onSubmit = async (data) => {
@@ -44,6 +45,8 @@ const Login = () => {
     const handleGoogleLogIn = async () => {
       try{
        const {user} = await loginWithGoogle()
+       console.log(user)
+       await saveUser(user.email, 'user')
        navigate('/')
        toast.success("Login Successfully")
       }catch(err){
@@ -56,6 +59,9 @@ const Login = () => {
 
     return (
         <>
+        <Helmet>
+        <title>Login || MediMarketHub</title>
+      </Helmet>
              <section className="pt-[100px] flex justify-center items-center space-x-3">
         <h1 className="lg:text-4xl font-extrabold text-2xl text-pretty">
           Log in

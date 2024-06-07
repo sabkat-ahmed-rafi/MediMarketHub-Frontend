@@ -1,12 +1,24 @@
 import React from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { GiTakeMyMoney, GiMoneyStack  } from "react-icons/gi";
+import { useQuery } from '@tanstack/react-query';
+import { axiosSecure } from '../../Hooks/useAxiosSecure';
 
 
 const AdminHome = () => {
 
 
     const {user} = useAuth()
+
+    const {data = {} } = useQuery({
+      queryKey: ['seller-stat', user?.email],
+      queryFn: async () => {
+        const {data} = await axiosSecure.get(`/admin-total-statistics`)
+        return data
+      },
+      enabled:!!user?.email
+    })
+    
 
     return (
         <>
@@ -18,7 +30,7 @@ const AdminHome = () => {
     <GiTakeMyMoney />
     </div>
     <div className="stat-title text-white font-bold">Total Revenue</div>
-    <div className="stat-value  text-white">{25.6}$</div>
+    <div className="stat-value  text-white">{data.totalAmount}$</div>
     <div className="stat-desc text-white">21% more than last month</div>
   </div>
   
@@ -27,7 +39,7 @@ const AdminHome = () => {
     <GiMoneyStack />
     </div>
     <div className="stat-title text-white font-bold">Total Paid</div>
-    <div className="stat-value text-white">{2.6}$</div>
+    <div className="stat-value text-white">{data.paidAmount}$</div>
     <div className="stat-desc text-white">21% more than last month</div>
   </div>
   
@@ -40,7 +52,7 @@ const AdminHome = () => {
       </div>
     </div>
     <div className="stat-title text-white font-bold">Total Pending</div>
-    <div className="stat-value text-white">{2.6}$</div>
+    <div className="stat-value text-white">{data.pendingAmount}$</div>
     <div className="stat-desc text-white">21% more than last month</div>
   </div>
   

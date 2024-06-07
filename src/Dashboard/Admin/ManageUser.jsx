@@ -23,6 +23,7 @@ import {
 } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import Header from "../../Components/Header";
+import { Helmet } from "react-helmet-async";
 
 const ManageUser = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -54,6 +55,9 @@ const ManageUser = () => {
     
   return (
     <>
+    <Helmet>
+        <title>Manage User || MediMarketHub</title>
+      </Helmet>
     <Header title={'Manage User'} description={'Welcome to the Manage Users page. Here, you can view, edit, and manage all user accounts within the system. This page allows you to keep track of user roles, update user information, and ensure that each user has the appropriate permissions'} />
       <section className="shadow-lg shadow-green-500 rounded-[12px]">
         <Table

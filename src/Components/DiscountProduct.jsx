@@ -12,9 +12,8 @@ const DiscountProduct = () => {
     const {data = [], isLoading} = useQuery({
         queryKey:['discountProducts'],
         queryFn: async () => {
-            const {data} = await axiosSecure.get('/medicine')
-            const discountProduct = await data.filter(item => item.percentage > 0)
-            return discountProduct
+            const {data} = await axiosSecure.get('/discountMedicine')    
+            return data
         }
     })
 

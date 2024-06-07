@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { axiosSecure } from '../../Hooks/useAxiosSecure';
 import Header from '../../Components/Header';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const ManageAds = () => {
 
@@ -37,6 +38,9 @@ const ManageAds = () => {
     
     return (
         <>
+        <Helmet>
+        <title>Manage Ads || MediMarketHub</title>
+      </Helmet>
         <Header title={"Manage Advertisements"} description={"Here you can manage advertisements for website. selected items will show on the slider ads section"}></Header>
             <section className='grid grid-cols-2 gap-7 pb-16'>
             {

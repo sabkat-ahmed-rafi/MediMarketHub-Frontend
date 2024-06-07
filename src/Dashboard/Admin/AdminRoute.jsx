@@ -7,7 +7,7 @@ import useAuth from '../../Hooks/useAuth';
 const AdminRoute = ({children}) => {
     const [role, isLoading] = useRole()
     const {loading} = useAuth()
-    if(isLoading || loading) return <ImSpinner2 size={30} color='green' className='flex flex-col justify-center items-center animate-spin' />
+    if(isLoading || loading) return <ImSpinner2 size={30} color='green' className=' sticky top-[50%] left-[63%] items-center animate-spin' />
     if(role === 'admin') return children
     return <Navigate to={'/dashboard'} />
 };

@@ -23,9 +23,9 @@ const Sidebar = () => {
     <>
       <section className="sticky top-0 min-h-screen bg-green-100 border-r-green-600  shadow-lg shadow-green-700 rounded-tr-3xl rounded-br-3xl bg-gradient-to-br from-teal-400 to-emerald-600 text-white">
         <div className="flex flex-col items-center">
-          <Link to={"/"} className="btn mt-6 btn-ghost hover:bg-none font-bold md:text-2xl lg:text-3xl">
+          <Link to={"/"} className=" mt-6 flex justify-center space-x-2 font-bold md:text-2xl lg:text-3xl">
             <AiFillMedicineBox className="text-white lg:text-4xl" />
-            MediMarketHub
+            <span>MediMarketHub</span>
           </Link>
         </div>
         <div className="flex flex-col items-center pt-4">
@@ -44,7 +44,7 @@ const Sidebar = () => {
                     <Link to={"/dashboard/adminPayment"} className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 border-white hover:text-black "><FaMoneyCheckAlt /><span>Payment management</span></Link>
                 </div>
                 <div className="lg:border-t  py-6">
-                    <Link className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 border-white hover:text-black "><BiSolidReport /><span>Sales Report</span></Link>
+                    <Link to={"/dashboard/salesReport"} className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 border-white hover:text-black "><BiSolidReport /><span>Sales Report</span></Link>
                 </div>
                 <div className="lg:border-t py-6">
                     <Link to={"/dashboard/manageAds"} className="lg:text-xl sm:text-sm flex items-center font-semibold font-serif space-x-7 border-white hover:text-black "><RiAdvertisementFill /><span>Manage banner Advertise</span></Link>

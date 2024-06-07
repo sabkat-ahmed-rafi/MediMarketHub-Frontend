@@ -6,7 +6,7 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth()
   const location = useLocation()
 
-  if (loading) return <ImSpinner2 size={30} color='green' className='flex flex-col justify-center items-center animate-spin' />
+  if (loading) return <ImSpinner2 size={30} color='green' className='sticky top-[50%] left-[50%] items-center animate-spin' />
   if (user) return children
   return <Navigate to='/login' state={location.pathname} replace='true' />
 }

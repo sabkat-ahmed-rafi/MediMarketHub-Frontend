@@ -6,6 +6,7 @@ import { axiosSecure } from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 
 const Cart = () => {
@@ -69,8 +70,13 @@ const Cart = () => {
         }
     }
 
+
+
     return (
         <>
+        <Helmet>
+        <title>Cart || MediMarketHub</title>
+      </Helmet>
         <Header title={totalAmount <= 0 ? 'Emply Cart': 'Cart'} />
         
         <section className='flex justify-end space-x-7 mr-[50px] mb-8'>
@@ -88,7 +94,7 @@ const Cart = () => {
                 </div>
             }
         </section>
-            <section className='mb-[100px] mx-[50px] shadow-lg shadow-green-500 rounded-[12px]'>
+            <section className='mb-[100px] mx-[50px] shadow-lg shadow-green-500 rounded-[12px] '>
             <Table 
         color={'success'}
         selectionMode="single" 

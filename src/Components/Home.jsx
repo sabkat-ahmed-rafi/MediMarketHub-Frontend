@@ -4,6 +4,7 @@ import Slider from './Slider';
 import DiscountProduct from './DiscountProduct';
 import Marquee from "react-fast-marquee";
 import Accordian from './Accordian';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     
@@ -11,6 +12,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+        <title>MediMarketHub</title>
+      </Helmet>
             <Slider />
             <CategoryCard/>
             <DiscountProduct />

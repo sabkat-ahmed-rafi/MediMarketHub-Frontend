@@ -18,6 +18,7 @@ import uploadImage from "../../Authentication/Utility/uploadImage";
 import { axiosSecure } from "../../Hooks/useAxiosSecure";
 import CategoryTable from "./CategoryTable";
 import useCategory from "../../Hooks/useCategory";
+import { Helmet } from "react-helmet-async";
 
 const ManageCategory = () => {
 
@@ -56,6 +57,9 @@ const ManageCategory = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Manage Category || MediMarketHub</title>
+      </Helmet>
       <Header
         title={"Manage Category"}
         description={

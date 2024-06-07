@@ -2,11 +2,23 @@ import React from 'react';
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
 import Header from '../../Components/Header';
 import useAuth from '../../Hooks/useAuth';
+import { useQuery } from '@tanstack/react-query';
+import { axiosSecure } from '../../Hooks/useAxiosSecure';
+import { format } from 'date-fns';
 
 
 const UserHome = () => {
 
     const {user} = useAuth()
+    const {data = []} = useQuery({
+      queryKey: ['userPaymentHistory', user?.email],
+      queryFn: async () => {
+        const {data} = await axiosSecure.get(`/purchase/user/${user?.email}`)
+        return data
+      }
+    })
+
+    console.log(data)
 
     return (
         <>
@@ -19,17 +31,20 @@ const UserHome = () => {
         aria-label="Example static collection table"
       >
         <TableHeader>
-          <TableColumn>NAME</TableColumn>
-          <TableColumn>ROLE</TableColumn>
-          <TableColumn>STATUS</TableColumn>
+          <TableColumn>Status</TableColumn>
+          <TableColumn>Total Item</TableColumn>
+          <TableColumn>Total Amount</TableColumn>
+          <TableColumn>Date</TableColumn>
         </TableHeader>
         <TableBody>
-          <TableRow key="1">
-            <TableCell>Tony Reichert</TableCell>
-            <TableCell>CEO</TableCell>
-            <TableCell>Active</TableCell>
-          </TableRow>
-
+          {
+            data.map(item => <TableRow key={item._id}>
+              <TableCell>{item.status}</TableCell>
+              <TableCell>{item.purchaseInfo.length}</TableCell>
+              <TableCell>${item.totalAmount}</TableCell>
+              <TableCell>{format(new Date(item.date), "dd/MM/yyyy")}</TableCell>
+            </TableRow>)
+          }
         </TableBody>
       </Table>
             </section>

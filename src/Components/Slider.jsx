@@ -33,7 +33,7 @@ const Slider = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper  w-[800px] h-[450px] mb-[56px]"
+        className="mySwiper  lg:w-[800px] h-[450px] mb-[56px]"
       >
         {
             data.map(item => <SwiperSlide key={item._id}><img className=' w-[55%] mx-auto' src={item.image} alt="" /></SwiperSlide>)

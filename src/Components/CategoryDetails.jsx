@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import Header from './Header';
+import { Helmet } from 'react-helmet-async';
 
 
 const CategoryDetails = () => {
@@ -59,6 +60,9 @@ const CategoryDetails = () => {
 
     return (
         <>
+        <Helmet>
+        <title>Category Details || MediMarketHub</title>
+      </Helmet>
         <Header title={'Category Details'} description={"Here you can find all the category based medicine infortmation. You can also see detailed information about specific category. Click the eye button to see all details."}></Header>
             <section className='px-[100px]'>
             <Table 

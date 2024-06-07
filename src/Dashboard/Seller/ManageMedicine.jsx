@@ -11,6 +11,7 @@ import { ImSpinner2 } from 'react-icons/im';
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import useCategory from '../../Hooks/useCategory';
+import { Helmet } from 'react-helmet-async';
 
 
 const ManageMedicine = () => {
@@ -85,7 +86,9 @@ const ManageMedicine = () => {
 
     return (
         <>
-        
+        <Helmet>
+        <title>Manage Medicine || MediMarketHub</title>
+      </Helmet>
         <Header title={"Manage Medicine"} description={'Welcome to the Manage Medicines section of your seller dashboard. This comprehensive feature allows you to efficiently manage your entire inventory of medicines. Here, you can add new medicines and keep track of stock levels and expiry dates'} />
             <section className='pb-12'>
                 <div className='pb-4'>

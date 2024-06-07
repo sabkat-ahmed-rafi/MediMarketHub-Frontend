@@ -11,6 +11,7 @@ import useAuth from '../../Hooks/useAuth';
 import Header from '../Header';
 import { CiSearch } from 'react-icons/ci';
 import {Pagination} from "@nextui-org/react";
+import { Helmet } from 'react-helmet-async';
 
 const Shop = () => {
 
@@ -66,8 +67,6 @@ const Shop = () => {
 
     }
 
-    console.log(search)
-    console.log(sort)
 
     const handleReset = () => {
       setSearch('')
@@ -77,6 +76,9 @@ const Shop = () => {
 
     return (
         <>
+        <Helmet>
+        <title>Shop || MediMarketHub</title>
+      </Helmet>
         <Header title={'All Medicines'} description={"Here you can find all the medicines. You can also check details information of a specific medicine by clicking the eye icon. You can also add a medicine to the cart by clicking add to cart."}></Header>
         <section className='relative left-[100px] max-w-[700px] grid grid-cols-4 space-x-10 pb-[20px]'>
         <div>
@@ -183,6 +185,7 @@ const Shop = () => {
       </Modal>
             </TableCell>
             <TableCell><Button
+                          disabled={!user}
                           onClick={() => handleAddToCart(item)}
                            className='bg-gradient-to-br from-teal-400 to-emerald-600 text-white font-semibold' variant="shadow"  >
                             Add to Cart

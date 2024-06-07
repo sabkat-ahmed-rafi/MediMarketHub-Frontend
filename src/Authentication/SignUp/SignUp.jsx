@@ -11,6 +11,7 @@ import uploadImage from "../Utility/uploadImage";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
+import { Helmet } from "react-helmet-async";
 
 
 const SignUp = () => {
@@ -32,7 +33,7 @@ const SignUp = () => {
 
      // creating user 
      const {user} = await createUser(email, password)
-     saveUser(email, role)
+     await saveUser(email, role)
      await updateUserProfile(name, photo)
      navigate('/')
      toast.success("Signup Successfully")
@@ -42,7 +43,7 @@ const SignUp = () => {
     toast.error(err.message)
     setLoading(false)
    }
-  };
+  }; 
 
   // Log in with google 
   const handleGoogleLogIn = async () => {
@@ -60,6 +61,9 @@ const SignUp = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Sign Up || MediMarketHub</title>
+      </Helmet>
       <section className=" flex justify-center items-center space-x-3">
         <h1 className="lg:text-4xl font-extrabold text-2xl text-pretty">
           Create an account

@@ -31,6 +31,8 @@ import SidebarHome from "./Dashboard/SidebarHome";
 import UserHome from "./Dashboard/User/UserHome";
 import SellerPayment from "./Dashboard/Seller/SellerPayment";
 import AdminPayment from "./Dashboard/Admin/AdminPayment";
+import Checkout from "./Components/Cart/Checkout";
+import Invoice from "./Components/Cart/Invoice";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +75,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/checkout",
+    element: <Checkout />,
+  },
+  {
+    path: "/invoice/:transactionId",
+    element: <Invoice />,
   },
   {
     path: "/dashboard",

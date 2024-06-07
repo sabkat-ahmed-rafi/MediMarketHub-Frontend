@@ -14,13 +14,12 @@ const DiscountProduct = () => {
         queryFn: async () => {
             const {data} = await axiosSecure.get('/medicine')
             const discountProduct = await data.filter(item => item.percentage > 0)
-            console.log(discountProduct)
             return discountProduct
         }
     })
 
-    console.log(data)
-    // const discountProduct = data.filter(item => item.percentage > 0)
+    console.log(data.length)
+
 
     return (
         <>

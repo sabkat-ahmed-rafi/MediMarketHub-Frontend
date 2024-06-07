@@ -51,7 +51,7 @@ const Shop = () => {
         const {name , genericName, description, price, percentage, category, company, massUnit, image, postedOn, seller, sellerName, sellerPhoto} = item;
 
         const cartInfo = {
-            name , genericName, description, price, percentage, category, company, massUnit, image, postedOn, seller, sellerName, sellerPhoto, quantity: 0, buyerEmail: user?.email, buyerName: user?.displayName, buyerPhoto: user?.photoURL, paymentStatus: "pending"
+            name , genericName, description, price, percentage, category, company, massUnit, image, postedOn, seller, sellerName, sellerPhoto, quantity: 1, buyerEmail: user?.email, buyerName: user?.displayName, buyerPhoto: user?.photoURL, paymentStatus: "pending"
         }
 
         try{
